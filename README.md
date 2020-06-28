@@ -36,14 +36,24 @@ main() {
 
 ### ILOC code output
 ```
-    loadAI rarp, 0 -> r1
-    loadi 3 -> r2
-    cmp_EQ r1, r2 -> r3
-    cbr r3 -> L1_T, L1_M
-L1_T:
-    loadAI rarp, 8 -> r4
-    loadi 2 -> r5
-    sub r4, r5 -> r6
-    storeAI r6 -> rarp, 4
-L1_M:
+L1_C:
+	loadAI rarp, 0 -> r1
+	loadi 0 -> r2
+	cmp_GT r1, r2 -> r3
+	loadAI rarp, 4 -> r4
+	loadi 100 -> r5
+	cmp_LT r4, r5 -> r6
+	or r3, r6 -> r7
+	cbr r7 -> L1_B, L1_O
+L1_B:
+	loadAI rarp, 0 -> r8
+	loadi 1 -> r9
+	add r8, r9 -> r10
+	storeAI r10 -> rarp, 0
+	loadi 3 -> r11
+	loadAI rarp, 0 -> r12
+	mult r11, r12 -> r13
+	storeAI r13 -> rarp, 4
+	jumpi -> L1_C
+L1_O:
 ```
