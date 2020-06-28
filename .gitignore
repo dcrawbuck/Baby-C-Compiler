@@ -1,0 +1,13 @@
+### C ###
+*.o
+*.exe
+*.out
+
+### Bison ###
+*.tab.*
+
+### Flex ###
+lex.yy.*
+
+### macOS ###
+.DS_Store
